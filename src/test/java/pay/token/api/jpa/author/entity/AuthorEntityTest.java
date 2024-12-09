@@ -1,4 +1,4 @@
-package pay.token.api.jpa.author.model;
+package pay.token.api.jpa.author.entity;
 
 import jakarta.persistence.*;
 import lombok.AccessLevel;

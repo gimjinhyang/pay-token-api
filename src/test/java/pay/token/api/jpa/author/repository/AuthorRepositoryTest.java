@@ -1,7 +1,7 @@
 package pay.token.api.jpa.author.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import pay.token.api.jpa.author.model.AuthorEntityTest;
+import pay.token.api.jpa.author.entity.AuthorEntityTest;
 
 /**
  * Author JPA 저장소

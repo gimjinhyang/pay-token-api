@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import pay.token.api.domain.author.repository.AuthorOneRepositoryTest;
-import pay.token.api.jpa.author.model.AuthorEntityTest;
+import pay.token.api.jpa.author.entity.AuthorEntityTest;
 import pay.token.api.jpa.author.repository.AuthorRepositoryTest;
 import pay.token.jooq.schema.public_.tables.records.AuthorRecord;
 
