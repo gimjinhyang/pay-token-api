@@ -36,7 +36,7 @@ public class TokenStatusEntity {
      * 등록시간
      */
     @Column(name = "created_time", updatable = false, nullable = false)
-    private long createdTime;
+    private long createdTime = System.currentTimeMillis();
 
 
     // //////////////////////////////////////////////////////////////
@@ -52,5 +52,37 @@ public class TokenStatusEntity {
     @JoinColumn(name = "token_id", nullable = false)
     private TokenEntity token;
 
+
+    // //////////////////////////////////////////////////////////////
+    //
+    // Constructors
+    //
+    // //////////////////////////////////////////////////////////////
+
+    public TokenStatusEntity(TokenStatus status, TokenEntity token) {
+        setStatus(status);
+        setToken(token);
+    }
+
+
+    // //////////////////////////////////////////////////////////////
+    //
+    // Methods
+    //
+    // //////////////////////////////////////////////////////////////
+
+    private void setStatus(TokenStatus status) {
+        if (status == null) {
+            throw new IllegalArgumentException("no status");
+        }
+        this.status = status;
+    }
+
+    private void setToken(TokenEntity token) {
+        if (token == null) {
+            throw new IllegalArgumentException("no token");
+        }
+        this.token = token;
+    }
 
 }

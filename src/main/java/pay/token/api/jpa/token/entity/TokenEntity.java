@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.apache.commons.lang3.StringUtils;
 import pay.token.api.jpa.token.enums.TokenStatus;
 
 import java.util.ArrayList;
@@ -57,7 +58,7 @@ public class TokenEntity {
      * 등록시간
      */
     @Column(name = "created_time", updatable = false, nullable = false)
-    private long createdTime;
+    private long createdTime = System.currentTimeMillis();
 
 
     // //////////////////////////////////////////////////////////////
@@ -72,5 +73,61 @@ public class TokenEntity {
     @OneToMany(mappedBy = "token", fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     private List<TokenStatusEntity> statuses = new ArrayList<>();
 
+
+    // //////////////////////////////////////////////////////////////
+    //
+    // Constructors
+    //
+    // //////////////////////////////////////////////////////////////
+
+    public TokenEntity(long cardRefId, String text, long expire, TokenStatus status) {
+        setCardRefId(cardRefId);
+        setText(text);
+        setExpire(expire);
+        setStatus(status);
+    }
+
+
+    // //////////////////////////////////////////////////////////////
+    //
+    // Methods
+    //
+    // //////////////////////////////////////////////////////////////
+
+
+    public void addStatuses(TokenStatus status) {
+        if (status == null) {
+            throw new IllegalArgumentException("no status");
+        }
+        this.statuses.add(new TokenStatusEntity(status, this));
+    }
+
+    private void setCardRefId(long cardRefId) {
+        if (cardRefId < 0L) {
+            throw new IllegalArgumentException("no card ref id");
+        }
+        this.cardRefId = cardRefId;
+    }
+
+    private void setText(String text) {
+        if (StringUtils.isBlank(text)) {
+            throw new IllegalArgumentException("no text");
+        }
+        this.text = text;
+    }
+
+    private void setExpire(long expire) {
+        if (expire < 0L) {
+            throw new IllegalArgumentException("no expire");
+        }
+        this.expire = expire;
+    }
+
+    private void setStatus(TokenStatus status) {
+        if (status == null) {
+            throw new IllegalArgumentException("no status");
+        }
+        this.status = status;
+    }
 
 }

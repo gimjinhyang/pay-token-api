@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.apache.commons.lang3.StringUtils;
 
 /**
  * Card Entity
@@ -70,6 +71,79 @@ public class CardEntity {
      * 등록시간
      */
     @Column(name = "created_time", updatable = false, nullable = false)
-    private long createdTime;
+    private long createdTime = System.currentTimeMillis();
+
+
+    // //////////////////////////////////////////////////////////////
+    //
+    // Constructors
+    //
+    // //////////////////////////////////////////////////////////////
+
+    public CardEntity(String payerCi, String payerName, String code, String number, String validYear, String validMonth, String cvs) {
+        setPayerCi(payerCi);
+        setPayerName(payerName);
+        setCode(code);
+        setNumber(number);
+        setValidYear(validYear);
+        setValidMonth(validMonth);
+        setCvs(cvs);
+    }
+
+
+    // //////////////////////////////////////////////////////////////
+    //
+    // Methods
+    //
+    // //////////////////////////////////////////////////////////////
+
+    private void setPayerCi(String payerCi) {
+        if (StringUtils.isBlank(payerCi)) {
+            throw new IllegalArgumentException("no payer ci");
+        }
+        this.payerCi = payerCi;
+    }
+
+    private void setPayerName(String payerName) {
+        if (StringUtils.isBlank(payerName)) {
+            throw new IllegalArgumentException("no payer name");
+        }
+        this.payerName = payerName;
+    }
+
+    private void setCode(String code) {
+        if (StringUtils.isBlank(code)) {
+            throw new IllegalArgumentException("no code");
+        }
+        this.code = code;
+    }
+
+    private void setNumber(String number) {
+        if (StringUtils.isBlank(number)) {
+            throw new IllegalArgumentException("no number");
+        }
+        this.number = number;
+    }
+
+    private void setValidYear(String validYear) {
+        if (StringUtils.isBlank(validYear)) {
+            throw new IllegalArgumentException("no valid year");
+        }
+        this.validYear = validYear;
+    }
+
+    private void setValidMonth(String validMonth) {
+        if (StringUtils.isBlank(validMonth)) {
+            throw new IllegalArgumentException("no valid month");
+        }
+        this.validMonth = validMonth;
+    }
+
+    private void setCvs(String cvs) {
+        if (StringUtils.isBlank(cvs)) {
+            throw new IllegalArgumentException("no cvs");
+        }
+        this.cvs = cvs;
+    }
 
 }
