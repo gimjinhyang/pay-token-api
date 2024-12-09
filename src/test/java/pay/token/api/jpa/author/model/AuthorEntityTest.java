@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
 @Table(name = "author")
-public class AuthorEntity {
+public class AuthorEntityTest {
 
     /**
      * ID

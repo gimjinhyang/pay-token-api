@@ -32,6 +32,9 @@ dependencies {
     implementation("commons-io:commons-io:2.18.0")
     implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.7.0")
 
+    // jooq module
+    implementation("pay.token:pay-token-jooq:0.0.1-SNAPSHOT")
+
     compileOnly("org.projectlombok:lombok")
     developmentOnly("org.springframework.boot:spring-boot-devtools")
     runtimeOnly("com.h2database:h2")
