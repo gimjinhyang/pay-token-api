@@ -52,7 +52,7 @@ public class TokenEntryValidateService {
   private void verifyExistCard(Long cardRefId) {
     final Optional<CardEntity> card = cardRepository.findById(cardRefId);
     if (!card.isPresent()) {
-      throw new IllegalArgumentException("등록된 카드 정보가 없습니다.");
+      throw new IllegalStateException("등록된 카드 정보가 없습니다.");
     }
   }
 

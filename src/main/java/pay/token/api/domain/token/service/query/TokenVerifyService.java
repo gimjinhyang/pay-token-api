@@ -68,7 +68,7 @@ public class TokenVerifyService {
   private TokenRecord getTokenRecord(String text) {
     final TokenRecord record = tokenOneRepository.findOne(text);
     if (record == null) {
-      throw new IllegalArgumentException("토큰이 없습니다.");
+      throw new IllegalStateException("토큰이 없습니다.");
     }
     return record;
   }

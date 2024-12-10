@@ -24,7 +24,7 @@ spring:
 
 # EMBEDDED SERVER
 server:
-  port: 9092
+  port: 1002
   tomcat:
     max-threads: 0
     uri-encoding: UTF-8

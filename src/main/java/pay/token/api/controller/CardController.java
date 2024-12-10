@@ -49,10 +49,10 @@ public class CardController {
 
     } catch (IllegalArgumentException e) {
       log.warn("caught a " + e.getClass() + " with message: " + e.getMessage(), e);
-      return ResponseEntity.badRequest().body(new ErrorResponse(HttpStatus.BAD_REQUEST, e.getMessage()));
+      return ResponseEntity.ok(new ErrorResponse(HttpStatus.BAD_REQUEST, e.getMessage()));
     } catch (Exception e) {
       log.warn("caught a " + e.getClass() + " with message: " + e.getMessage(), e);
-      return ResponseEntity.badRequest().body(new ErrorResponse(HttpStatus.BAD_REQUEST, "카드 등록을 실패했습니다"));
+      return ResponseEntity.ok(new ErrorResponse(HttpStatus.BAD_REQUEST, "카드 등록을 실패했습니다"));
     }
   }
 

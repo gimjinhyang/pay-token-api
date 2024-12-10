@@ -52,12 +52,12 @@ public class TokenController {
       final String token = tokenEntryService.entry(param);
       return ResponseEntity.ok(new DataResponse(ImmutableMap.of("token", token)));
 
-    } catch (IllegalArgumentException e) {
+    } catch (IllegalArgumentException | IllegalStateException e) {
       log.warn("caught a " + e.getClass() + " with message: " + e.getMessage(), e);
-      return ResponseEntity.badRequest().body(new ErrorResponse(HttpStatus.BAD_REQUEST, e.getMessage()));
+      return ResponseEntity.ok(new ErrorResponse(HttpStatus.BAD_REQUEST, e.getMessage()));
     } catch (Exception e) {
       log.warn("caught a " + e.getClass() + " with message: " + e.getMessage(), e);
-      return ResponseEntity.badRequest().body(new ErrorResponse(HttpStatus.BAD_REQUEST, "토큰 발급을 실패했습니다"));
+      return ResponseEntity.ok(new ErrorResponse(HttpStatus.BAD_REQUEST, "토큰 발급을 실패했습니다"));
     }
   }
 
@@ -76,15 +76,14 @@ public class TokenController {
       // 토큰 승인 처리
       tokenUpdateService.approved(tokenId);
 
-      // 토큰 발급
       return ResponseEntity.ok(new ErrorResponse(HttpStatus.OK, "ok"));
 
-    } catch (IllegalArgumentException e) {
+    } catch (IllegalArgumentException | IllegalStateException e) {
       log.warn("caught a " + e.getClass() + " with message: " + e.getMessage(), e);
-      return ResponseEntity.badRequest().body(new ErrorResponse(HttpStatus.BAD_REQUEST, e.getMessage()));
+      return ResponseEntity.ok(new ErrorResponse(HttpStatus.BAD_REQUEST, e.getMessage()));
     } catch (Exception e) {
       log.warn("caught a " + e.getClass() + " with message: " + e.getMessage(), e);
-      return ResponseEntity.badRequest().body(new ErrorResponse(HttpStatus.BAD_REQUEST, "토큰 유효성 확인을 실패했습니다"));
+      return ResponseEntity.ok(new ErrorResponse(HttpStatus.BAD_REQUEST, "토큰 유효성 확인을 실패했습니다"));
     }
   }
 
