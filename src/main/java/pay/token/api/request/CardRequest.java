@@ -1,6 +1,3 @@
-/*
- * Copyright ⓒ 2011 Hellomarket Inc. All Rights Reserved
- */
 package pay.token.api.request;
 
 import lombok.Getter;
@@ -22,5 +19,34 @@ public class CardRequest {
      */
     private String payerCi;
 
+    /**
+     * 결제자 이름
+     */
+    private String payerName;
+
+    /**
+     * 카드 코드
+     */
+    private String code;
+
+    /**
+     * 카드 번호
+     */
+    private String number;
+
+    /**
+     * 카드 유효기간 년도
+     */
+    private String validYear;
+
+    /**
+     * 카드 유효기간 월
+     */
+    private String validMonth;
+
+    /**
+     * 카드 CVS
+     */
+    private String cvs;
 
 }

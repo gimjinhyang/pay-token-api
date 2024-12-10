@@ -18,6 +18,9 @@ spring:
   output:
     ansi:
       enabled: always
+  profiles:
+    include:
+      - key
 
 # EMBEDDED SERVER
 server:

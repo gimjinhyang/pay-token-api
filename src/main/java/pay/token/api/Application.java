@@ -14,14 +14,14 @@ import java.nio.charset.Charset;
 @SpringBootApplication(scanBasePackages = "pay.token")
 public class Application extends SpringBootServletInitializer {
 
-    public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
-    }
+  public static void main(String[] args) {
+    SpringApplication.run(Application.class, args);
+  }
 
-    @Bean
-    public HttpMessageConverter<String> responseBodyConverter() {
-        return new StringHttpMessageConverter(Charset.forName("UTF-8"));
-    }
+  @Bean
+  public HttpMessageConverter<String> responseBodyConverter() {
+    return new StringHttpMessageConverter(Charset.forName("UTF-8"));
+  }
 
 
 }

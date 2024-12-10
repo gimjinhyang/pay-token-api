@@ -1,9 +1,7 @@
-/*
- * Copyright ⓒ 2011 Hellomarket Inc. All Rights Reserved
- */
 package pay.token.api.jpa.token.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+
 import pay.token.api.jpa.token.entity.TokenEntity;
 
 /**
