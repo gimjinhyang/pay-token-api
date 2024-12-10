@@ -63,7 +63,7 @@ public class TokenEntity {
    * 토큰 상태
    */
   @Enumerated(EnumType.STRING)
-  @Column(name = "token_status_code", updatable = false, nullable = false)
+  @Column(name = "token_status_code", nullable = false)
   private TokenStatus status = TokenStatus.READY;
 
   /**
@@ -138,7 +138,6 @@ public class TokenEntity {
     }
     this.status = status;
   }
-
 
   private void setText(String text) {
     if (StringUtils.isBlank(text)) {
