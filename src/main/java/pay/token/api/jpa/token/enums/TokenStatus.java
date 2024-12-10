@@ -8,9 +8,9 @@ package pay.token.api.jpa.token.enums;
 public enum TokenStatus {
 
   /**
-   * 생성
+   * 준비
    */
-  CREATED,
+  READY,
 
   /**
    * 승인

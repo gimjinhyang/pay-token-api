@@ -27,20 +27,19 @@ import pay.token.api.response.ErrorResponse;
 @RequestMapping(value = "/api/card", produces = MediaType.APPLICATION_JSON_VALUE)
 public class CardController {
 
-
   private final CardEntryValidateService cardEntryValidateService;
   private final CardEntryService cardEntryService;
+
 
   /**
    * 카드 등록 요청
    *
-   * @param param
+   * @param param {@link CardRequest}
    * @return
    */
   @PostMapping
   public ResponseEntity<?> post(@RequestBody CardRequest param) {
     try {
-
       // 등록 요청 파라미터 확인
       cardEntryValidateService.validate(param);
 

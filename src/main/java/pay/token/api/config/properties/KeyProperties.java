@@ -18,13 +18,23 @@ import lombok.ToString;
 public class KeyProperties {
 
   /**
-   * 공개키
+   * 카드 공개키
    */
-  private String publicText;
+  private String cardPublic;
 
   /**
-   * 개인키
+   * 카드 개인키
    */
-  private String privateText;
+  private String cardPrivate;
+
+  /**
+   * 토큰 공개키
+   */
+  private String tokenPublic;
+
+  /**
+   * 토큰 개인키
+   */
+  private String tokenPrivate;
 
 }

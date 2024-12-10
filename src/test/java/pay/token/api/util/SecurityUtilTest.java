@@ -17,10 +17,10 @@ class SecurityUtilTest {
 
   @Disabled
   @Test
-  void makeEncrypted() {
+  void makeCardValue() {
     final String text = "test";
-    final String encrypted = SecurityUtil.makeEncrypted(text, keyProperties.getPublicText());
-    final String decrypted = SecurityUtil.makeDecrypted(encrypted, keyProperties.getPrivateText());
+    final String encrypted = SecurityUtil.makeEncrypted(text, keyProperties.getCardPublic());
+    final String decrypted = SecurityUtil.makeDecrypted(encrypted, keyProperties.getCardPrivate());
 
     log.info("text : {}", text);
     log.info("encrypted : {}", encrypted);
@@ -41,6 +41,18 @@ class SecurityUtilTest {
     log.info("publicKey: {}", publicKey);
     log.info("privateKey: {}", privateKey);
     log.info("=============================================================");
+  }
+
+  @Disabled
+  @Test
+  void makeTokenValue() {
+    final String text = "2_1733842967897";
+    final String encrypted = SecurityUtil.makeEncrypted(text, keyProperties.getTokenPublic());
+    final String decrypted = SecurityUtil.makeDecrypted(encrypted, keyProperties.getTokenPrivate());
+
+    log.info("text : {}", text);
+    log.info("encrypted : {}", encrypted);
+    log.info("decrypted : {}", decrypted);
   }
 
 

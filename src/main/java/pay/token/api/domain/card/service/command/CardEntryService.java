@@ -1,8 +1,8 @@
 package pay.token.api.domain.card.service.command;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import pay.token.api.config.properties.KeyProperties;
 import pay.token.api.jpa.card.entity.CardEntity;
@@ -11,7 +11,7 @@ import pay.token.api.request.CardRequest;
 import pay.token.api.util.SecurityUtil;
 
 /**
- * 카드 등록 파라미터 확인 서비스
+ * 카드 등록 서비스
  *
  * @author Jinhyang
  */
@@ -42,12 +42,12 @@ public class CardEntryService {
    * @return {@link CardEntity}
    */
   private CardEntity makeCardEntity(CardRequest param) {
-    final String payerName = SecurityUtil.makeEncrypted(param.getPayerName(), keyProperties.getPublicText());
-    final String code = SecurityUtil.makeEncrypted(param.getCode(), keyProperties.getPublicText());
-    final String number = SecurityUtil.makeEncrypted(param.getNumber(), keyProperties.getPublicText());
-    final String validYear = SecurityUtil.makeEncrypted(param.getValidYear(), keyProperties.getPublicText());
-    final String validMonth = SecurityUtil.makeEncrypted(param.getValidMonth(), keyProperties.getPublicText());
-    final String cvs = SecurityUtil.makeEncrypted(param.getCvs(), keyProperties.getPublicText());
+    final String payerName = SecurityUtil.makeEncrypted(param.getPayerName(), keyProperties.getCardPublic());
+    final String code = SecurityUtil.makeEncrypted(param.getCode(), keyProperties.getCardPublic());
+    final String number = SecurityUtil.makeEncrypted(param.getNumber(), keyProperties.getCardPublic());
+    final String validYear = SecurityUtil.makeEncrypted(param.getValidYear(), keyProperties.getCardPublic());
+    final String validMonth = SecurityUtil.makeEncrypted(param.getValidMonth(), keyProperties.getCardPublic());
+    final String cvs = SecurityUtil.makeEncrypted(param.getCvs(), keyProperties.getCardPublic());
     return new CardEntity(param.getPayerCi(), payerName, code, number, validYear, validMonth, cvs);
   }
 

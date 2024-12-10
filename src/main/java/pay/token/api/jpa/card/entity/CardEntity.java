@@ -80,7 +80,6 @@ public class CardEntity {
    */
   @Column(name = "created_time", updatable = false, nullable = false)
   private LocalDateTime createdTime = LocalDateTime.now();
-  //  private long createdTime = System.currentTimeMillis();
 
 
   // //////////////////////////////////////////////////////////////
