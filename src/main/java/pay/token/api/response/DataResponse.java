@@ -32,18 +32,8 @@ public class DataResponse extends AbstractEntity {
   // Constructors
   //
   // ////////////////////////////////////////////////////////////////////////////////////
-  public DataResponse(int status, String message, Object data) {
-    this.setStatus(status);
-    this.setMessage(message);
-    this.data = data;
-  }
 
   public DataResponse(Object data) {
-    this.data = data;
-  }
-
-  public DataResponse(String message, Object data) {
-    this.setMessage(message);
     this.data = data;
   }
 
