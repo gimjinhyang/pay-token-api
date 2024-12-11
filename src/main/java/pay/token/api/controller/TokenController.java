@@ -67,8 +67,8 @@ public class TokenController {
    * @param param {@link TokenVerifyRequest}
    * @return
    */
-  @PostMapping(value = "/verify")
-  public ResponseEntity<?> postAsVerify(@RequestBody TokenVerifyRequest param) {
+  @PostMapping(value = "/valid")
+  public ResponseEntity<?> postAsValid(@RequestBody TokenVerifyRequest param) {
     try {
       // 토큰 유효성 확인
       final Long tokenId = tokenVerifyService.validate(param);
@@ -76,7 +76,7 @@ public class TokenController {
       // 토큰 승인 처리
       tokenUpdateService.approved(tokenId);
 
-      return ResponseEntity.ok(new ErrorResponse(HttpStatus.OK, "ok"));
+      return ResponseEntity.ok(new ErrorResponse(HttpStatus.OK, "success"));
 
     } catch (IllegalArgumentException | IllegalStateException e) {
       log.warn("caught a " + e.getClass() + " with message: " + e.getMessage(), e);
