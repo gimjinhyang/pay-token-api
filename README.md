@@ -114,4 +114,11 @@ pay token api
         }
         ```
 
+* * *
+
+##### Swagger
+
+```
+http://localhost:1002/swagger-ui/index.html
+```
 
