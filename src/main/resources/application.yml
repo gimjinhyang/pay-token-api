@@ -35,5 +35,8 @@ server:
 # Logging level
 logging:
   level:
+    org.springframework.transaction: DEBUG
     org.hibernate.type: trace
+    org.hibernate.sql: debug
+    org.jooq: debug
 

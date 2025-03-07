@@ -7,6 +7,7 @@ import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import pay.token.api.config.properties.KeyProperties;
 import pay.token.api.jpa.token.entity.TokenEntity;
 import pay.token.api.jpa.token.repository.TokenRepository;
@@ -18,6 +19,7 @@ import pay.token.api.util.SecurityUtil;
  *
  * @author Jinhyang
  */
+@Slf4j
 @RequiredArgsConstructor
 @Service
 public class TokenEntryService {
@@ -36,8 +38,10 @@ public class TokenEntryService {
 
     // 토큰 만료 시간 생성
     final LocalDateTime expire = makeTokenExpire();
+    log.info("expire : {}", expire);
     // 토큰 값 생성
     final String text = makeTokenText(param.getCardRefId(), expire);
+    log.info("text : {}", text);
     // 토큰 정보 생성
     final TokenEntity token = makeTokenEntity(param.getCardRefId(), text, expire);
 
