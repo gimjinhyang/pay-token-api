@@ -8,7 +8,7 @@ plugins {
 }
 
 group = "pay.token"
-version = "0.0.1-SNAPSHOT"
+version = "0.0.1"
 
 java {
     toolchain {
@@ -36,7 +36,7 @@ dependencies {
     implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.7.0")
 
     // jooq module
-    implementation("pay.token:pay-token-jooq:0.0.1-SNAPSHOT")
+    implementation("pay.token:pay-token-jooq:0.0.1")
 
     compileOnly("org.projectlombok:lombok")
     developmentOnly("org.springframework.boot:spring-boot-devtools")
